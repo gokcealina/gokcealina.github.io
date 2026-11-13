@@ -115,7 +115,7 @@
     const ctx = cv.getContext('2d'); let S = 0, f = 0, raf = 0, near = false;
     const fit = () => { const d = Math.min(2, devicePixelRatio || 1); S = cv.clientWidth; cv.width = cv.height = Math.round(S * d); ctx.setTransform(d, 0, 0, d, 0, 0); };
     // progress follows the section: 0 while it is below the fold, 1 once its top has risen to the upper third
-    const target = () => { const r = sec.getBoundingClientRect(), vh = innerHeight; if (reduce) return 1; return innerWidth <= 960 ? clamp((vh * 1.15 - r.top) / (vh * 0.3)) : clamp((vh * 0.95 - r.top) / (vh * 0.22)); };   // on phones it is already drawing as the section arrives, and done by the time the icon is in view; on desktop it starts when the section's top passes the middle of the screen
+    const target = () => { const r = sec.getBoundingClientRect(), vh = innerHeight; if (reduce) return 1; return innerWidth <= 960 ? clamp((vh * 1.15 - r.top) / (vh * 0.3)) : clamp((vh * 0.55 - r.top) / (vh * 0.22)); };   // on phones it is already drawing as the section arrives, and done by the time the icon is in view; on desktop it starts when the section's top passes the middle of the screen
     function draw(now) {
       const h = S / 2, k = S * 0.4, P = n => [h + n[0] * k, h + n[1] * k];
       ctx.clearRect(0, 0, S, S); ctx.globalCompositeOperation = 'lighter'; ctx.lineCap = 'round';
